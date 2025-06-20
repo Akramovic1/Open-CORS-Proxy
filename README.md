@@ -553,7 +553,7 @@ eb open
 ```
 
 Tip:
-Save this script as deploy-aws.sh, chmod +x deploy-aws.sh, and run with ./deploy-aws.sh.
+Save this script as deploy-aws-eb.sh, chmod +x deploy-aws-eb.sh, and run with ./deploy-aws-eb.sh.
 
 </details>
 

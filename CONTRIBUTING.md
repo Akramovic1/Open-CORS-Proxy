@@ -44,7 +44,7 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 
 ```bash
 # Clone your fork
-git clone https://github.com/your-username/Open-CORS-Proxy.git
+git clone https://github.com/Akramovic1/Open-CORS-Proxy.git
 cd Open-CORS-Proxy
 
 # Install dependencies

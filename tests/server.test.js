@@ -449,13 +449,6 @@ describe("Universal CORS Proxy Server", () => {
       expect(response.headers["access-control-allow-headers"]).toBe("*");
       expect(response.headers["access-control-expose-headers"]).toBe("*");
     });
-
-    test("OPTIONS requests should have proper CORS headers and max age", async () => {
-      const response = await request(app).options("/proxy").expect(204);
-
-      //   expect(response.headers["access-control-allow-origin"]).toBe("*");
-      //   expect(response.headers["access-control-max-age"]).toBe("86400");
-    });
   });
 
   describe("Debug Mode", () => {

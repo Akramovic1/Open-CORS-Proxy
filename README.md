@@ -473,17 +473,89 @@ npm run lint:fix
 
 <div align="center">
 
-|                                                                 Platform                                                                 |                                                Deployment                                                | Features                           |
-| :--------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: | :--------------------------------- |
-|              [![Render](https://img.shields.io/badge/Render-46E3B7?logo=render&logoColor=white)](https://render.com/deploy)              | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)  | Auto SSL, Global CDN, Auto-scaling |
-|              [![Heroku](https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=white)](https://heroku.com/deploy)              |      [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)       | Auto SSL, Add-ons, CI/CD           |
-|            [![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/new/clone)             |             [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone)             | Edge Network, Serverless           |
-| [![Railway](https://img.shields.io/badge/Railway-0B0D0E?logo=railway&logoColor=white)](https://railway.app/template/deployment-template) | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deployment-template) | Auto Deploy, Databases             |
-|                    [![Fly.io](https://img.shields.io/badge/Fly.io-8B5CF6?logo=fly&logoColor=white)](#deploy-to-flyio)                    |                                   [Deploy to Fly.io](#deploy-to-flyio)                                   | Global Distribution, Edge          |
+|                                                                                Platform                                                                                |                                                Deployment                                                | Features                           |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------: | :--------------------------------- |
+|                             [![Render](https://img.shields.io/badge/Render-46E3B7?logo=render&logoColor=white)](https://render.com/deploy)                             | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)  | Auto SSL, Global CDN, Auto-scaling |
+|                             [![Heroku](https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=white)](https://heroku.com/deploy)                             |      [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)       | Auto SSL, Add-ons, CI/CD           |
+|                           [![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white)](https://vercel.com/new/clone)                            |             [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone)             | Edge Network, Serverless           |
+|                [![Railway](https://img.shields.io/badge/Railway-0B0D0E?logo=railway&logoColor=white)](https://railway.app/template/deployment-template)                | [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deployment-template) | Auto Deploy, Databases             |
+|                                   [![Fly.io](https://img.shields.io/badge/Fly.io-8B5CF6?logo=fly&logoColor=white)](#deploy-to-flyio)                                   |                                   [Deploy to Fly.io](#deploy-to-flyio)                                   | Global Distribution, Edge          |
+| [![AWS Elastic Beanstalk](https://img.shields.io/badge/AWS%20Elastic%20Beanstalk-orange?logo=amazon-aws&logoColor=white)](#aws-elastic-beanstalk-one-click-deployment) |                       [Deploy to AWS](#aws-elastic-beanstalk-one-click-deployment)                       | Free Tier, Auto SSL, Easy Upgrades |
 
 </div>
 
 ### Platform-Specific Instructions
+
+<details> <summary><b>🟤 AWS Elastic Beanstalk (Free Tier eligible, Production-ready)</b></summary>
+Fork or clone this repository to your own GitHub account.
+
+Sign in to the AWS Console and go to Elastic Beanstalk.
+
+Click "Create Application", choose "Web server environment", and select Node.js as the platform (Node 18+ recommended).
+
+Under Source code origin, select "Upload your code" and upload your project ZIP, or connect your GitHub and select your repo/branch.
+
+Set the environment variables under Configuration > Software > Environment properties:
+
+PROXY_API_KEY = your-api-key
+
+ADMIN_API_KEY = your-admin-key
+
+(Optional: adjust PORT, RATE_LIMIT_MAX, etc.)
+
+Click Create environment to deploy.
+
+Once deployed, visit your provided AWS URL (e.g., http://your-app-env.eba-xxxxxxx.us-east-1.elasticbeanstalk.com).
+
+Features: Free AWS t2.micro instance (Free Tier), Auto-scaling, Custom domains, Monitoring, Production stability
+
+Tip:
+You can automate deployment using the AWS CLI:
+
+```bash
+# Install AWS CLI and EB CLI
+pip install awsebcli --upgrade
+
+# Initialize and deploy
+eb init -p node.js my-cors-proxy
+eb create --single --instance_type t2.micro --envvars PROXY_API_KEY=your-key,ADMIN_API_KEY=your-admin-key
+eb open
+```
+
+🚀 One-Click Deployment Script
+You can automate the deployment to AWS Elastic Beanstalk with the following script (requires AWS CLI and EB CLI):
+
+```bash
+#!/bin/bash
+# Deploy Open CORS Proxy to AWS Elastic Beanstalk
+
+APP_NAME=open-cors-proxy
+ENV_NAME=open-cors-proxy-env
+
+# Edit these values
+PROXY_API_KEY=your-proxy-key
+ADMIN_API_KEY=your-admin-key
+
+# Initialize EB CLI project (only first time)
+eb init $APP_NAME --platform node.js --region us-east-1
+
+# Create environment if it doesn't exist
+eb list | grep $ENV_NAME || eb create $ENV_NAME \
+  --single \
+  --instance_type t2.micro \
+  --envvars "PROXY_API_KEY=$PROXY_API_KEY,ADMIN_API_KEY=$ADMIN_API_KEY"
+
+# Deploy app
+eb deploy
+
+# Open the deployed app in your browser
+eb open
+```
+
+Tip:
+Save this script as deploy-aws.sh, chmod +x deploy-aws.sh, and run with ./deploy-aws.sh.
+
+</details>
 
 <details>
 <summary><b>🟢 Render (Recommended for beginners)</b></summary>

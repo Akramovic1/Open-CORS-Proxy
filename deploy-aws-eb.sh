@@ -43,9 +43,18 @@ fi
 echo "🚀 Deploying $ZIPNAME to Elastic Beanstalk..."
 eb deploy
 
-# 6. Output environment URL
+# 6. Upload .env as environment variables (optional, but recommended)
+if [ -f ".env" ]; then
+  echo "🌍 Uploading .env environment variables to Elastic Beanstalk..."
+  # This will parse all KEY=VALUE pairs (ignoring comments/empty lines) and push to AWS
+  eb setenv $(grep -v '^#' .env | xargs)
+else
+  echo "⚠️  No .env file found. Skipping environment variables upload."
+fi
+
+# 7. Output environment URL
 echo ""
 echo "✅ Deployment done! Your app should be available at:"
 eb status | grep "CNAME:" | awk '{print "https://"$2}'
 
-echo "🎉 All set! (Update environment variables from AWS console if needed)"
+echo "🎉 All set! Your .env environment variables have been set on AWS Elastic Beanstalk."

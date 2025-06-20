@@ -1,85 +1,113 @@
 # Contributing to Open CORS Proxy
 
-Thank you for your interest in contributing! We welcome all contributions.
+We welcome contributions to the Open CORS Proxy project! This document provides guidelines for contributing.
 
-## Quick Start
+## Code of Conduct
 
-1. **Fork** the repository on GitHub
-2. **Clone** your fork locally:
-   ```bash
-   git clone https://github.com/Akramovic1/Open-CORS-Proxy.git
-   cd Open-CORS-Proxy
-   ```
-3. **Install** dependencies:
-   ```bash
-   npm install
-   ```
-4. **Copy** environment file:
-   ```bash
-   cp .env.example .env
-   ```
-5. **Start** development server:
-   ```bash
-   npm run dev
-   ```
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
-## Making Changes
+## How Can I Contribute?
 
-1. **Create a branch** for your changes:
+### Reporting Bugs
 
-   ```bash
-   git checkout -b fix/your-fix-name
-   git checkout -b feat/your-feature-name
-   ```
+Before creating bug reports, please check the issue list as you might find out that you don't need to create one. When you are creating a bug report, please include as many details as possible:
 
-2. **Make your changes** to `server.js`
+- **Use a clear and descriptive title**
+- **Describe the exact steps to reproduce the problem**
+- **Provide specific examples to demonstrate the steps**
+- **Describe the behavior you observed and what behavior you expected**
+- **Include screenshots if applicable**
 
-3. **Test your changes**:
+### Suggesting Enhancements
 
-   ```bash
-   npm test
-   curl http://localhost:4000/health
-   ```
+Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, please include:
 
-4. **Commit your changes**:
+- **Use a clear and descriptive title**
+- **Provide a step-by-step description of the suggested enhancement**
+- **Provide specific examples to demonstrate the steps**
+- **Describe the current behavior and explain the behavior you expected**
+- **Explain why this enhancement would be useful**
 
-   ```bash
-   git add .
-   git commit -m "feat: add new feature"
-   git commit -m "fix: resolve bug"
-   ```
+### Pull Requests
 
-5. **Push and create a Pull Request**:
-   ```bash
-   git push origin your-branch-name
-   ```
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Add tests for your changes
+5. Ensure all tests pass (`npm test`)
+6. Update documentation if needed
+7. Commit your changes (`git commit -m 'Add some amazing feature'`)
+8. Push to the branch (`git push origin feature/amazing-feature`)
+9. Open a Pull Request
 
-## Code Style
+## Development Setup
 
-- Use 2 spaces for indentation
-- Use semicolons
-- Follow existing code patterns
+```bash
+# Clone your fork
+git clone https://github.com/your-username/Open-CORS-Proxy.git
+cd Open-CORS-Proxy
+
+# Install dependencies
+npm install
+
+# Copy environment template
+cp .env.example .env
+
+# Start development server
+npm run dev
+
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Lint code
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
+```
+
+## Coding Standards
+
+- Follow the existing code style
+- Use meaningful variable and function names
 - Add comments for complex logic
+- Write tests for new features
+- Ensure all tests pass before submitting PR
+- Update documentation for API changes
 
-## Pull Request Guidelines
+## Commit Messages
 
-- Keep changes focused and small
-- Update CHANGELOG.md if needed
-- Test your changes before submitting
-- Write clear commit messages
+Use clear and meaningful commit messages:
 
-## Need Help?
+- `feat: add new feature`
+- `fix: resolve issue with...`
+- `docs: update documentation`
+- `test: add tests for...`
+- `refactor: improve code structure`
+- `perf: optimize performance`
 
-- Create an issue for questions
-- Check existing issues first
-- Be respectful and patient
+## Testing
 
-## Types of Contributions
+- Write unit tests for new functionality
+- Ensure all existing tests continue to pass
+- Add integration tests for new endpoints
+- Test edge cases and error conditions
 
-- 🐛 Bug fixes
-- ✨ New features
-- 📚 Documentation improvements
-- 🧪 Tests
-- 🔧 Performance improvements
+## Documentation
 
-That's it! Thanks for contributing! 🚀
+- Update README.md for new features
+- Add code comments for complex logic
+- Update API documentation in `/docs` endpoint
+- Include examples in documentation
+
+## Release Process
+
+1. Update version in package.json
+2. Update CHANGELOG.md
+3. Create a new release on GitHub
+4. Update deployment documentation if needed
+
+Thank you for contributing to Open CORS Proxy!

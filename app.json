@@ -1,0 +1,43 @@
+{
+  "name": "Open CORS Proxy",
+  "description": "High-performance CORS proxy server with authentication and monitoring",
+  "repository": "https://github.com/Akramovic1/Open-CORS-Proxy",
+  "logo": "https://raw.githubusercontent.com/Akramovic1/Open-CORS-Proxy/main/assets/logo.png",
+  "keywords": ["cors", "proxy", "api", "express", "node"],
+  "image": "heroku/nodejs",
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment setting",
+      "value": "production"
+    },
+    "PROXY_API_KEY": {
+      "description": "API key for proxy authentication (optional but recommended)",
+      "generator": "secret"
+    },
+    "ADMIN_API_KEY": {
+      "description": "API key for admin endpoints",
+      "generator": "secret"
+    },
+    "RATE_LIMIT_MAX": {
+      "description": "Maximum requests per rate limit window",
+      "value": "1000"
+    },
+    "RATE_LIMIT_WINDOW": {
+      "description": "Rate limit window in milliseconds",
+      "value": "900000"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "healthchecks": [
+    {
+      "type": "startup",
+      "name": "web check",
+      "path": "/health"
+    }
+  ]
+}

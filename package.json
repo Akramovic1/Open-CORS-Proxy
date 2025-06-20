@@ -1,7 +1,7 @@
 {
   "name": "open-cors-proxy",
-  "version": "1.0.0",
-  "description": "A high-performance, secure CORS proxy server that works with any API",
+  "version": "1.1.0",
+  "description": "High-performance CORS proxy server with authentication and monitoring",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,33 +9,48 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:silent": "SILENT_TESTS=true jest",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "docker:build": "docker build -t open-cors-proxy .",
+    "docker:run": "docker run -p 4000:4000 open-cors-proxy"
   },
   "keywords": [
     "cors",
     "proxy",
     "api",
     "express",
-    "universal"
+    "node",
+    "authentication",
+    "monitoring",
+    "rate-limiting"
   ],
-  "author": "Your Name",
+  "author": "Akramovic",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akramovic1/Open-CORS-Proxy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Akramovic1/Open-CORS-Proxy/issues"
+  },
+  "homepage": "https://github.com/Akramovic1/Open-CORS-Proxy#readme",
   "dependencies": {
-    "express": "^4.18.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
-    "node-fetch": "^3.3.2",
-    "dotenv": "^16.3.1"
+    "node-fetch": "^2.6.12"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2",
-    "eslint": "^8.56.0",
+    "eslint": "^8.55.0",
     "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
     "supertest": "^6.3.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   }
 }

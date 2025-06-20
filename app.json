@@ -1,30 +1,82 @@
 {
   "name": "Open CORS Proxy",
-  "description": "High-performance CORS proxy server with authentication and monitoring",
+  "description": "High-performance, secure, and feature-rich CORS proxy server with authentication and monitoring",
   "repository": "https://github.com/Akramovic1/Open-CORS-Proxy",
-  "logo": "https://raw.githubusercontent.com/Akramovic1/Open-CORS-Proxy/main/assets/logo.png",
-  "keywords": ["cors", "proxy", "api", "express", "node"],
+  "logo": "https://img.shields.io/badge/CORS-Proxy-blue",
+  "keywords": [
+    "cors",
+    "proxy",
+    "api",
+    "express",
+    "node",
+    "javascript",
+    "middleware",
+    "security",
+    "authentication",
+    "rate-limiting"
+  ],
   "image": "heroku/nodejs",
+  "stack": "heroku-22",
   "env": {
     "NODE_ENV": {
       "description": "Environment setting",
-      "value": "production"
+      "value": "production",
+      "required": true
     },
     "PROXY_API_KEY": {
-      "description": "API key for proxy authentication (optional but recommended)",
-      "generator": "secret"
+      "description": "API key for proxy authentication (optional but recommended for production)",
+      "generator": "secret",
+      "required": false
     },
     "ADMIN_API_KEY": {
-      "description": "API key for admin endpoints",
-      "generator": "secret"
+      "description": "API key for admin endpoints (recommended for production monitoring)",
+      "generator": "secret",
+      "required": false
     },
     "RATE_LIMIT_MAX": {
       "description": "Maximum requests per rate limit window",
-      "value": "1000"
+      "value": "1000",
+      "required": false
     },
     "RATE_LIMIT_WINDOW": {
-      "description": "Rate limit window in milliseconds",
-      "value": "900000"
+      "description": "Rate limit window in milliseconds (15 minutes default)",
+      "value": "900000",
+      "required": false
+    },
+    "REQUEST_TIMEOUT": {
+      "description": "Request timeout in milliseconds",
+      "value": "30000",
+      "required": false
+    },
+    "MAX_BODY_SIZE": {
+      "description": "Maximum request body size",
+      "value": "10mb",
+      "required": false
+    },
+    "ALLOWED_ORIGINS": {
+      "description": "Comma-separated list of allowed origins (* for all)",
+      "value": "*",
+      "required": false
+    },
+    "BLOCKED_DOMAINS": {
+      "description": "Comma-separated list of blocked domains",
+      "value": "",
+      "required": false
+    },
+    "DEBUG_HEADERS": {
+      "description": "Show debug headers in responses (disable in production)",
+      "value": "false",
+      "required": false
+    },
+    "DEBUG_ERRORS": {
+      "description": "Include detailed error information (disable in production)",
+      "value": "false",
+      "required": false
+    },
+    "INCLUDE_CONFIG": {
+      "description": "Include configuration in health endpoint (disable in production)",
+      "value": "false",
+      "required": false
     }
   },
   "formation": {
@@ -33,11 +85,25 @@
       "size": "basic"
     }
   },
+  "addons": [
+    {
+      "plan": "papertrail:choklad",
+      "as": "PAPERTRAIL"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
   "healthchecks": [
     {
       "type": "startup",
       "name": "web check",
       "path": "/health"
     }
-  ]
+  ],
+  "scripts": {
+    "postdeploy": "echo 'Open CORS Proxy deployed successfully! Check /health endpoint for status.'"
+  }
 }

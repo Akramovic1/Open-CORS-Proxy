@@ -460,7 +460,9 @@ app.all("/proxy", requireProxyAuth, async (req, res) => {
     Object.entries(responseHeaders).forEach(([key, value]) => {
       try {
         res.setHeader(key, value);
-      } catch (headerError) {}
+      } catch (headerError) {
+        /* no-op */
+      }
     });
 
     setCorsHeaders(res);
@@ -837,7 +839,7 @@ app.get("/docs", (req, res) => {
 // =============================================================================
 
 // Handles request entity too large
-app.use((err, req, res, next) => {
+app.use((err, _req, res, next) => {
   if (err.type === "entity.too.large") {
     setCorsHeaders(res);
     return res.status(413).json({
@@ -850,7 +852,7 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.use((error, req, res, next) => {
+app.use((error, _req, res, _next) => {
   res.status(500).json({
     error: "Internal server error",
     message: error.message,
@@ -893,14 +895,16 @@ const cleanupStats = () => {
     if (proxyStats.recentErrors.length > 50) {
       proxyStats.recentErrors = proxyStats.recentErrors.slice(0, 50);
     }
-  } catch (error) {}
+  } catch (error) {
+    /* no-op */
+  }
 };
 
 if (process.env.NODE_ENV !== "test") {
   cleanupInterval = setInterval(cleanupStats, 5 * 60 * 1000);
 }
 
-const gracefulShutdown = (signal) => {
+const gracefulShutdown = (_signal) => {
   if (cleanupInterval) clearInterval(cleanupInterval);
   if (server) {
     server.close(() => {

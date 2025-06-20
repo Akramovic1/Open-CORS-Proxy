@@ -12,15 +12,15 @@
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone)
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deployment-template)
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/your-username/cors-proxy)
-[![Coverage Status](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/your-username/cors-proxy)
-[![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/your-username/cors-proxy)
-[![Security](https://img.shields.io/badge/security-A%2B-brightgreen.svg)](https://github.com/your-username/cors-proxy)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/Akramovic1/Open-CORS-Proxy)
+[![Coverage Status](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://github.com/Akramovic1/Open-CORS-Proxy)
+[![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/Akramovic1/Open-CORS-Proxy)
+[![Security](https://img.shields.io/badge/security-A%2B-brightgreen.svg)](https://github.com/Akramovic1/Open-CORS-Proxy)
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/cors-proxy.svg?style=social&label=Star)](https://github.com/your-username/cors-proxy)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/cors-proxy.svg?style=social&label=Fork)](https://github.com/your-username/cors-proxy/fork)
-[![GitHub issues](https://img.shields.io/github/issues/your-username/cors-proxy.svg)](https://github.com/your-username/cors-proxy/issues)
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/your-username/cors-proxy.svg)](https://github.com/your-username/cors-proxy/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/Akramovic1/Open-CORS-Proxy.svg?style=social&label=Star)](https://github.com/Akramovic1/Open-CORS-Proxy)
+[![GitHub forks](https://img.shields.io/github/forks/Akramovic1/Open-CORS-Proxy.svg?style=social&label=Fork)](https://github.com/Akramovic1/Open-CORS-Proxy/fork)
+[![GitHub issues](https://img.shields.io/github/issues/Akramovic1/Open-CORS-Proxy.svg)](https://github.com/Akramovic1/Open-CORS-Proxy/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/Akramovic1/Open-CORS-Proxy.svg)](https://github.com/Akramovic1/Open-CORS-Proxy/pulls)
 
 </div>
 
@@ -97,8 +97,8 @@ A high-performance, secure, and feature-rich CORS proxy server that works with a
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/cors-proxy.git
-cd cors-proxy
+git clone https://github.com/Akramovic1/Open-CORS-Proxy.git
+cd Open-CORS-Proxy
 
 # Install dependencies
 npm install
@@ -558,7 +558,7 @@ Create `render.yaml` for infrastructure as code:
 ```yaml
 services:
   - type: web
-    name: cors-proxy
+    name: Open-CORS-Proxy
     env: node
     plan: starter
     buildCommand: npm install
@@ -580,7 +580,7 @@ services:
 Create `fly.toml`:
 
 ```toml
-app = "your-cors-proxy"
+app = "your-Open-CORS-Proxy"
 primary_region = "dfw"
 
 [build]
@@ -625,7 +625,7 @@ Create `app.json` for Heroku Button:
 {
   "name": "Open CORS Proxy",
   "description": "High-performance CORS proxy server with authentication and monitoring",
-  "repository": "https://github.com/your-username/cors-proxy",
+  "repository": "https://github.com/Akramovic1/Open-CORS-Proxy",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
   "keywords": ["cors", "proxy", "api", "express", "node"],
   "image": "heroku/nodejs",
@@ -742,7 +742,7 @@ Create `docker-compose.yml`:
 version: "3.8"
 
 services:
-  cors-proxy:
+  Open-CORS-Proxy:
     build: .
     ports:
       - "4000:4000"
@@ -798,7 +798,7 @@ req.end();
 
 #### AWS Elastic Beanstalk
 
-Create `.ebextensions/01-cors-proxy.config`:
+Create `.ebextensions/01-Open-CORS-Proxy.config`:
 
 ```yaml
 option_settings:
@@ -815,8 +815,8 @@ option_settings:
 
 ```bash
 # Build and deploy
-gcloud builds submit --tag gcr.io/PROJECT-ID/cors-proxy
-gcloud run deploy --image gcr.io/PROJECT-ID/cors-proxy \
+gcloud builds submit --tag gcr.io/PROJECT-ID/Open-CORS-Proxy
+gcloud run deploy --image gcr.io/PROJECT-ID/Open-CORS-Proxy \
   --set-env-vars PROXY_API_KEY=your-key,ADMIN_API_KEY=your-admin-key \
   --platform managed \
   --region us-central1 \
@@ -829,9 +829,9 @@ gcloud run deploy --image gcr.io/PROJECT-ID/cors-proxy \
 # Deploy with Azure CLI
 az container create \
   --resource-group myResourceGroup \
-  --name cors-proxy \
-  --image your-registry/cors-proxy:latest \
-  --dns-name-label cors-proxy-unique \
+  --name Open-CORS-Proxy \
+  --image your-registry/Open-CORS-Proxy:latest \
+  --dns-name-label Open-CORS-Proxy-unique \
   --ports 4000 \
   --environment-variables \
     NODE_ENV=production \
@@ -844,13 +844,13 @@ az container create \
 Create `.do/app.yaml`:
 
 ```yaml
-name: cors-proxy
+name: Open-CORS-Proxy
 services:
   - environment_slug: node-js
     github:
       branch: main
       deploy_on_push: true
-      repo: your-username/cors-proxy
+      repo: Akramovic1/Open-CORS-Proxy
     health_check:
       http_path: /health
     http_port: 4000
@@ -1047,14 +1047,14 @@ INCLUDE_CONFIG=true   # Shows configuration in health endpoint
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions!
 
 ### Development Setup
 
 ```bash
 # Fork and clone the repository
-git clone https://github.com/your-username/cors-proxy.git
-cd cors-proxy
+git clone https://github.com/Akramovic1/Open-CORS-Proxy.git
+cd Open-CORS-Proxy
 
 # Install dependencies
 npm install
@@ -1079,13 +1079,11 @@ npm run lint
 - 📚 Update documentation for any API changes
 - 🔍 Ensure all tests pass before submitting PR
 - 📋 Use descriptive commit messages
-- 🏷️ Update CHANGELOG.md for notable changes
 
 ### Reporting Issues
 
 - 🐛 **Bug Reports**: Use the bug report template
 - 💡 **Feature Requests**: Use the feature request template
-- 🔒 **Security Issues**: Email security@yourproject.com
 - 📚 **Documentation**: Suggest improvements via issues
 
 ## 📄 License
@@ -1104,8 +1102,8 @@ This project is open source and available under the MIT License.
 
 <div align="center">
 
-[![GitHub Issues](https://img.shields.io/github/issues/your-username/cors-proxy.svg)](https://github.com/your-username/cors-proxy/issues)
-[![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-purple.svg)](https://github.com/your-username/cors-proxy/discussions)
+[![GitHub Issues](https://img.shields.io/github/issues/Akramovic1/Open-CORS-Proxy.svg)](https://github.com/Akramovic1/Open-CORS-Proxy/issues)
+[![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-purple.svg)](https://github.com/Akramovic1/Open-CORS-Proxy/discussions)
 [![Documentation](https://img.shields.io/badge/Documentation-Available-blue.svg)](#-table-of-contents)
 
 </div>
@@ -1113,10 +1111,9 @@ This project is open source and available under the MIT License.
 ### Getting Help
 
 - 📖 **Documentation**: Check this README and `/docs` endpoint
-- 🐛 **Issues**: [Report bugs](https://github.com/your-username/cors-proxy/issues/new?template=bug_report.md)
-- 💡 **Feature Requests**: [Suggest features](https://github.com/your-username/cors-proxy/issues/new?template=feature_request.md)
-- 💬 **Discussions**: [Community discussions](https://github.com/your-username/cors-proxy/discussions)
-- 📧 **Email**: support@yourproject.com
+- 🐛 **Issues**: [Report bugs](https://github.com/Akramovic1/Open-CORS-Proxy/issues/new?template=bug_report.md)
+- 💡 **Feature Requests**: [Suggest features](https://github.com/Akramovic1/Open-CORS-Proxy/issues/new?template=feature_request.md)
+- 💬 **Discussions**: [Community discussions](https://github.com/Akramovic1/Open-CORS-Proxy/discussions)
 
 ### Troubleshooting
 
@@ -1133,9 +1130,9 @@ For common issues and solutions, check:
 
 **⭐ Star this repository if it helped you!**
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/cors-proxy.svg?style=social&label=Star)](https://github.com/your-username/cors-proxy)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/cors-proxy.svg?style=social&label=Fork)](https://github.com/your-username/cors-proxy/fork)
+[![GitHub stars](https://img.shields.io/github/stars/Akramovic1/Open-CORS-Proxy.svg?style=social&label=Star)](https://github.com/Akramovic1/Open-CORS-Proxy)
+[![GitHub forks](https://img.shields.io/github/forks/Akramovic1/Open-CORS-Proxy.svg?style=social&label=Fork)](https://github.com/Akramovic1/Open-CORS-Proxy/fork)
 
-Made with ❤️ by the community • [Contribute](CONTRIBUTING.md) • [Report Issues](https://github.com/your-username/cors-proxy/issues)
+Made with ❤️ by the community • [Contribute](CONTRIBUTING.md) • [Report Issues](https://github.com/Akramovic1/Open-CORS-Proxy/issues)
 
 </div>
